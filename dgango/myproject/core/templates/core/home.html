@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Full Stack</title>
+</head>
+<body>
+    <h2>Welcome Arman 👋</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter city">
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if city %}
+        <p>You entered: <b>{{ city }}</b></p>
+    {% endif %}
+
+    <h3>Saved Cities</h3>
+    <ul>
+        {% for c in cities %}
+            <li>{{ c.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

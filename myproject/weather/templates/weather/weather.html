@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>weather and Aqi</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'weather/style.css' %}">
+
+    </head>
+    <body>
+
+        <div class="card">
+                <form method="post">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter Indian city" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if error %}
+            <p style="color:red">{{ error }}</p>
+        {% endif %}
+        <h2>weather and aqi of {{city}} </h2>
+        <p><b>Temperature:</b> {{temperature}} °C </p>
+        <p><b>PM2.5:</b> {{pm2_5}} µg/m³ </p>
+        <p><b>PM10:</b> {{pm10}}  µg/m³ </p>
+        <p>
+            <div class="aqi--bar">
+    <b>Status:</b> {{ aqi_category }} {{ aqi_icon }}
+</p>
+
+<p>
+    <b>Health Advisory:</b> {{ health_message }}
+</p></div>
+        </div>
+    </body>
+</html> 
